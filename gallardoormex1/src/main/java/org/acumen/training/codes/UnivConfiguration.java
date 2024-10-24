@@ -3,10 +3,9 @@ package org.acumen.training.codes;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class BestBuyConfiguration {
+public class UnivConfiguration {
 	private Configuration cfg;
-	
-	//Step 1 : Setting up the Configuration instance
+
 	public boolean createConfiguration() {
 		try {
 			cfg = new Configuration().configure();
@@ -16,16 +15,15 @@ public class BestBuyConfiguration {
 		}
 		return false;
 	}
-	
-	//Step 2: Setup the SessionFactory
+
 	public SessionFactory getSessionFactory() {
 		try {
-			SessionFactory sf =cfg.buildSessionFactory();
+			SessionFactory sf = cfg.buildSessionFactory();
 			return sf;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
-		
+
 	}
 }

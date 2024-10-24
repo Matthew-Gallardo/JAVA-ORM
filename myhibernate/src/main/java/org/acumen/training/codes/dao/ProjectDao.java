@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.acumen.training.codes.model.Project;
+import org.acumen.training.codes.model.ProjectMembers;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -15,6 +16,8 @@ import org.jboss.logging.Logger;
 
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Join;
+import jakarta.persistence.criteria.JoinType;
 import jakarta.persistence.criteria.Root;
 
 
@@ -246,6 +249,45 @@ public class ProjectDao {
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
+		return null;
+	}
+	
+	//HQL Join
+	public List<Project> joinMembersPerProj(){
+		List<Project> records = new ArrayList<>();
+		try(Session sess = sf.openSession();) {
+			String hql = "from Project p inner join p.projMembers pm"; 
+			Query<Project> query = sess.createQuery(hql, Project.class);
+			records = query.getResultList();
+			int recordCount = (int) query.getResultCount();
+			LOGGER.info("Number of rows: %d".formatted(recordCount));
+				return Collections.unmodifiableList(records);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+		return null;
+			
+	}
+	
+	public List<Project> joinMembersPerProjCriteria(){
+		List<Project> records = new ArrayList<>();
+		try(Session sess = sf.openSession();) {
+			
+			CriteriaBuilder builder = sess.getCriteriaBuilder();
+			CriteriaQuery<Project> sql= builder.createQuery(Project.class);
+			Root<Project> root = sql.from(Project.class);
+			Join<Project, ProjectMembers> join = root.join("projMembers",JoinType.INNER);
+			sql.select(root);
+
+			Query<Project> query = sess.createQuery(sql);
+			records = query.getResultList();
+			int recordCount = (int) query.getResultCount();
+			LOGGER.info("Number of rows: %d".formatted(recordCount));
+				return Collections.unmodifiableList(records);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+	
 		return null;
 	}
 	

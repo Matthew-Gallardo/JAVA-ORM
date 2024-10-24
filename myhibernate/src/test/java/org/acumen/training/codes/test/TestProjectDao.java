@@ -1,22 +1,16 @@
 package org.acumen.training.codes.test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 import java.time.LocalDate;
 import java.util.Arrays;
 
 import org.acumen.training.codes.HRMSConfiguration;
 import org.acumen.training.codes.dao.ProjectDao;
 import org.acumen.training.codes.model.Project;
-import org.checkerframework.checker.units.qual.m;
 import org.hibernate.SessionFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-
-import jakarta.validation.constraints.AssertFalse.List;
 
 public class TestProjectDao {
 	
@@ -105,6 +99,7 @@ private HRMSConfiguration config;
 		System.out.println(rec);
 	
 	}
+	
 	@Test
 	public void testShowSomeProj() {
 		config.createConfiguration();
@@ -116,6 +111,40 @@ private HRMSConfiguration config;
 		});
 		
 	}
+	
+	@Disabled
+	@Test
+	public void testJoinMembersPerProj() {
+		config.createConfiguration();
+		SessionFactory sf = config.getSessionFactory();
+		ProjectDao dao = new ProjectDao(sf);
+		java.util.List<Project> rec = dao.joinMembersPerProj();
+		System.out.println(rec);
+		rec.stream().forEach((r)->{
+			System.out.print(r.getProjname()+ " ");
+			System.out.print(r.getProjMembers());
+			
+		});
+		
+	}
+		@Test
+		public void testJoinMembersPerProjCriteria() {
+			config.createConfiguration();
+			SessionFactory sf = config.getSessionFactory();
+			ProjectDao dao = new ProjectDao(sf);
+			java.util.List<Project> rec = dao.joinMembersPerProjCriteria();
+			System.out.println(rec);
+			rec.stream().forEach((r)->{
+				System.out.print(r.getProjname()+ " ");
+				System.out.println(r.getProjMembers());
+				
+			});
+			
+	}
+	
+	
+	
+	
 	
 	
 }

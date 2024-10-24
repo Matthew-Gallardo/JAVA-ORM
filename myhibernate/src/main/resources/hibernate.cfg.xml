@@ -14,5 +14,6 @@
 
 	 <!-- Registration model classes -->
 	 <mapping class="org.acumen.training.codes.model.Project"/>
+	 <mapping class="org.acumen.training.codes.model.ProjectMembers"/>
 	</session-factory>
 </hibernate-configuration>

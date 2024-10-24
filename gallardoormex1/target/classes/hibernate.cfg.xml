@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN" 
+             "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!-- JDBC Configuration details -->
+		<property name="connection.driver_class">org.postgresql.Driver</property>
+		<property name="connection.url">jdbc:postgresql://localhost:5432/university</property>
+		<property name="connection.username">postgres</property>
+		<property name="connection.password">admin2255</property>
+		<!-- Hibernate Property Configuration -->
+		<property name="show_sql">true</property>
+		<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+
+		<!-- Registration model classes -->
+		<mapping class="org.acumen.training.codes.model.Advisor" />
+		<mapping class="org.acumen.training.codes.model.Classroom" />
+		<mapping class="org.acumen.training.codes.model.ClassroomId" />
+		<mapping class="org.acumen.training.codes.model.Course" />
+		<mapping class="org.acumen.training.codes.model.Department" />
+		<mapping class="org.acumen.training.codes.model.Instructor" />
+		<mapping class="org.acumen.training.codes.model.Section" />
+		<mapping class="org.acumen.training.codes.model.SectionId" />
+		<mapping class="org.acumen.training.codes.model.SectionId" />
+		<mapping class="org.acumen.training.codes.model.Student" />
+		<mapping class="org.acumen.training.codes.model.Takes" />
+		<mapping class="org.acumen.training.codes.model.TakesId" />
+		<mapping class="org.acumen.training.codes.model.TimeSlot" />
+		<mapping class="org.acumen.training.codes.model.TimeSlotId" />
+	</session-factory>
+</hibernate-configuration>
