@@ -46,7 +46,7 @@ public class Advisor {
 		this.SId = SId;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "i_id")
 	public Instructor getInstructor() {
 		return this.instructor;
@@ -56,7 +56,7 @@ public class Advisor {
 		this.instructor = instructor;
 	}
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@PrimaryKeyJoinColumn
 	public Student getStudent() {
 		return this.student;

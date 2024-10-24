@@ -62,7 +62,7 @@ public class Section {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumns({ @JoinColumn(name = "building", referencedColumnName = "building"),
 			@JoinColumn(name = "room_number", referencedColumnName = "room_number") })
 	public Classroom getClassroom() {
@@ -73,7 +73,7 @@ public class Section {
 		this.classroom = classroom;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "course_id", nullable = false, insertable = false, updatable = false)
 	public Course getCourse() {
 		return this.course;
@@ -92,7 +92,7 @@ public class Section {
 		this.timeSlotId = timeSlotId;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "sections")
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "sections")
 	public Set<Instructor> getInstructors() {
 		return this.instructors;
 	}
@@ -101,7 +101,7 @@ public class Section {
 		this.instructors = instructors;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "section")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "section")
 	public Set<Takes> getTakeses() {
 		return this.takeses;
 	}

@@ -55,7 +55,7 @@ public class Student {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "dept_name")
 	public Department getDepartment() {
 		return this.department;
@@ -83,7 +83,7 @@ public class Student {
 		this.totalCredits = totalCredits;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "student")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "student")
 	public Set<Takes> getTakes() {
 		return this.takes;
 	}
@@ -92,7 +92,7 @@ public class Student {
 		this.takes = takes;
 	}
 
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "student")
+	@OneToOne(fetch = FetchType.EAGER, mappedBy = "student")
 	public Advisor getAdvisor() {
 		return this.advisor;
 	}

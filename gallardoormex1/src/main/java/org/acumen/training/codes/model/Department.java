@@ -71,7 +71,7 @@ public class Department {
 		this.budget = budget;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "department")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "department")
 	public Set<Course> getCourses() {
 		return this.courses;
 	}
@@ -80,7 +80,7 @@ public class Department {
 		this.courses = courses;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "department")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "department")
 	public Set<Student> getStudents() {
 		return this.students;
 	}
@@ -89,7 +89,7 @@ public class Department {
 		this.students = students;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "department")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "department")
 	public Set<Instructor> getInstructors() {
 		return this.instructors;
 	}

@@ -54,7 +54,7 @@ public class Instructor {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "dept_name")
 	public Department getDepartment() {
 		return this.department;
@@ -82,7 +82,7 @@ public class Instructor {
 		this.salary = salary;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "teaches", schema = "public", joinColumns = @JoinColumn(name = "id", nullable = false, updatable = false), inverseJoinColumns = @JoinColumn(name = "course_id", nullable = false, updatable = false))
 	public Set<Section> getSections() {
 		return this.sections;
@@ -92,7 +92,7 @@ public class Instructor {
 		this.sections = sections;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "instructor")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "instructor")
 	public Set<Advisor> getAdvisors() {
 		return this.advisors;
 	}

@@ -55,7 +55,7 @@ public class Classroom {
 		this.capacity = capacity;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "classroom")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "classroom")
 	public Set<Section> getSections() {
 		return this.sections;
 	}

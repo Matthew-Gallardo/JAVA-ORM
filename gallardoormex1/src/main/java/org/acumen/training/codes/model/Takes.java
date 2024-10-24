@@ -55,7 +55,7 @@ public class Takes {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumns({
 			@JoinColumn(name = "course_id", referencedColumnName = "course_id", nullable = false, insertable = false, updatable = false),
 			@JoinColumn(name = "sec_id", referencedColumnName = "sec_id", nullable = false, insertable = false, updatable = false),
@@ -69,7 +69,7 @@ public class Takes {
 		this.section = section;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id", nullable = false, insertable = false, updatable = false)
 	public Student getStudent() {
 		return this.student;
